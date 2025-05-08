@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animal Herd Detection</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🐾 Animal Herd Detection System</h1>
+
+  <form action="/" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" required />
+    <button type="submit">Upload Image</button>
+  </form>
+
+  {% if result_image %}
+    <div class="image-preview">
+      <h2>📷 Processed Image:</h2>
+      <img src="{{ result_image }}" alt="Detected Animal Image" />
+    </div>
+
+    {% if herds %}
+      <h3>🐮 Detected Herds:</h3>
+      <ul class="herd-list">
+        {% for animal, count in herds.items() %}
+          <li>{{ animal }}: {{ count }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if found and coords %}
+      <h3>📍 Herd Location:</h3>
+      <div id="map"></div>
+    {% elif no_herd_message %}
+      <div class="message">{{ no_herd_message }}</div>
+    {% endif %}
+  {% endif %}
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+  {% if found and coords %}
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const lat = parseFloat("{{ coords.lat | round(6) }}");
+        const lon = parseFloat("{{ coords.lon | round(6) }}");
+
+        const map = L.map("map").setView([lat, lon], 13);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19
+        }).addTo(map);
+
+        L.marker([lat, lon]).addTo(map)
+          .bindPopup("Herd Detected Here!")
+          .openPopup();
+      });
+    </script>
+  {% endif %}
+</body>
+</html>

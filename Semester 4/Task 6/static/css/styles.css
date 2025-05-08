@@ -1,0 +1,93 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #fdfdfd, #e0e0e0);
+  margin: 0;
+  padding: 30px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.8em;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 2px #ccc;
+}
+
+form {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-out;
+}
+
+input[type="file"] {
+  display: block;
+  margin: 10px auto 20px;
+  font-size: 1em;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.image-preview {
+  margin-top: 20px;
+  animation: slideIn 0.8s ease;
+}
+
+img {
+  max-width: 95%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
+}
+
+.herd-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.herd-list li {
+  margin: 6px 0;
+  color: #34495e;
+}
+
+.message {
+  color: #c0392b;
+  font-size: 1.4em;
+  margin-top: 25px;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

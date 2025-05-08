@@ -1,0 +1,10 @@
+Flask
+torch
+torchvision
+opencv-python
+numpy
+ultralytics
+mediapipe
+werkzeug
+flask-cors
+Pillow

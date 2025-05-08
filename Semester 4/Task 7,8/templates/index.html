@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Crypto Price Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Live Crypto Price Tracker</h1>
+  <div class="container">
+    <input type="text" id="searchInput" placeholder="Search for a cryptocurrency...">
+    <select id="currencySelector" size="10"></select>
+    <div class="interval-buttons">
+      <button data-interval="1">1 Day</button>
+      <button data-interval="7">7 Days</button>
+      <button data-interval="30">30 Days</button>
+    </div>
+    <canvas id="priceChart"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
